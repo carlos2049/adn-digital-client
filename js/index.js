@@ -32,6 +32,12 @@ popupSend.addEventListener('submit', (e) => {
   }
 });
 
+const cleanInput = () => {
+  document.getElementById('name').value = '';
+  document.getElementById('color').value = '';
+  document.getElementById('race').value = '';
+};
+
 const btnAccion = (e) => {
   if (e.target.classList.contains('btn-info')) {
     togglePopuup();
@@ -55,6 +61,11 @@ const actualizarPerrito = async (data) => {
       method: 'PUT',
       body: JSON.stringify(data),
     });
+
+    response = await res.json();
+    if (response.success === false) {
+      alert(response.message);
+    }
     fetching();
     togglePopuup();
 
@@ -76,7 +87,6 @@ const crearPerrito = async (data) => {
       body: JSON.stringify(data),
     });
     response = await res.json();
-    console.log(response);
     if (response.success === false) {
       alert(response.message);
     }
@@ -117,12 +127,10 @@ const fetching = async () => {
     list.innerHTML = '';
 
     Object.values(perritos).forEach((perrito, i) => {
-      console.log(i);
       templateCarrito.querySelectorAll('td')[0].textContent = i + 1;
       templateCarrito.querySelectorAll('td')[1].textContent = perrito.nombre;
       templateCarrito.querySelectorAll('td')[2].textContent = perrito.color;
       templateCarrito.querySelectorAll('td')[3].textContent = perrito.raza;
-      console.log(templateCarrito);
 
       templateCarrito.querySelector('.btn-danger').dataset.id = perrito.id;
       templateCarrito.querySelector('.btn-info').dataset.id = perrito.id;
@@ -138,4 +146,5 @@ const fetching = async () => {
 
 function togglePopuup() {
   document.getElementById('popup-1').classList.toggle('active');
+  cleanInput();
 }

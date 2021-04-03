@@ -11,7 +11,7 @@
 </head>
 <body>
   <div class="d-flex">
-    <button class="btn btn-dark btn-lg" onclick="togglePopuup()">Nuevo Perrito</button>
+    <button class="btn btn-dark btn-lg" onclick="togglePopuup()">Crear Perrito</button>
 
   </div>
 
@@ -21,15 +21,15 @@
       <form>
         <div class="mb-3">
           <label for="exampleInputEmail1" class="form-label">Nombre</label>
-          <input type="text" class="form-control"  required>
+          <input type="text" class="form-control"  id="name" required>
         </div>
         <div class="mb-3">
           <label for="exampleInputPassword1" class="form-label">color</label>
-          <input type="text" class="form-control" required>
+          <input type="text" class="form-control" id="color" required>
         </div>
         <div class="mb-3">
           <label for="exampleInputPassword1" class="form-label">raza</label>
-          <input type="text" class="form-control"  required>
+          <input type="text" class="form-control" id="race"  required>
         </div>
         <button type="submit" class="btn btn-primary">Guardar</button>
       </form>
