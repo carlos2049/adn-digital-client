@@ -75,6 +75,11 @@ const crearPerrito = async (data) => {
       method: 'POST',
       body: JSON.stringify(data),
     });
+    response = await res.json();
+    console.log(response);
+    if (response.success === false) {
+      alert(response.message);
+    }
     fetching();
     togglePopuup();
   } catch (error) {
